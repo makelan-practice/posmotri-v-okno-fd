@@ -8,6 +8,16 @@ html {
   block-size: 100%;
 }
 
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .page {
   inline-size: 1200px;
   block-size: 100%;
@@ -16,7 +26,244 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
+
+.title {
+  font-family: 'Oswald', sans-serif; /* Шрифт */
+  font-size: 48px;                   /* Размер шрифта */
+  font-weight: 700;                  /* Жирный */
+  line-height: 1.2;                  /* Межстрочный интервал */
+  text-transform: uppercase;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  align-items: end; /* прижимаем к нижнему краю */
+  gap: 30px;
+}
+
+.content__list-container {
+  block-size: 298px;
+  overflow-y: auto;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content__details {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content__video-card {
+  display: flex;
+  align-items: flex-start; /* прижимаем по дополнительной (вертикальной) оси */
+}
+
+.content__video-card-thumbnail {
+  inline-size: 194px;
+  block-size: 103px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content__video-card-description-container {
+  flex-grow: 1;
+}
+
+.content__accent {
+  color: rgba(255, 255, 255, 0.5);                   /* Золотистый акцентный цвет */
+}
+
+.content__card-link {
+  text-decoration: none;             /* Убираем подчёркивание */
+  color: #ffffff;                   /* Белый цвет текста */
+}
+
+.content__card-link:hover {
+  color: #FFD700;                   /* Золотой цвет при наведении */
+}
+
+.content__video-card-title {
+  font-size: 30px;                  /* Размер шрифта */
+  font-weight: 700;                 /* Жирный */
+  line-height: 100%;                 /* Межстрочный интервал */
+  overflow: hidden;                /* Скрываем переполненный текст */
+  text-overflow: ellipsis;         /* Заменяем переполнение на "..." */
+  white-space: nowrap;             /* Запрещаем перенос строки */
+  text-transform: uppercase;
+  font-family: 'Oswald';
+  margin-bottom: 6px;
+  
+}
+
+.content__video-card-description {
+  font-size: 18px;                /* Размер шрифта */
+  line-height: 90%;               /* Межстрочный интервал */
+  /*display: -webkit-box;           /* Для использования line-clamp */
+  /*-webkit-line-clamp: 3;          /* Ограничение по количеству строк */
+  -webkit-box-orient: vertical;   /* Вертикальное направление для line-clamp */
+  overflow: hidden;               /* Скрытие переполненного контента */
+  font-family: 'Fira Sans Condensed';
+
+}
+
+.result__video-container {
+  block-size: 386px;         /* высота */
+  inline-size: 711px;        /* ширина */
+  margin-block-end: 16px;    /* отступ снизу */
+}
+
+.result__video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.search-form {
+  display: flex;
+  gap: 20px;
+  /*align-items: start;*/
+  align-items: flex-start;
+  justify-content: space-between; 
+}
+
+.search-form__fieldset-title {
+  font-family: 'Oswald', sans-serif; /* Шрифт заголовков */
+  font-weight: 600;                  /* Полужирный */
+  font-size: 22px;                   /* Размер шрифта */
+  margin-bottom: 16px;               /* Отступ снизу */
+}
+
+.search-form__label-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.search-form__textfield {
+ /* background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  font-size: 16px;
+  color: #fff;
+  padding: 4px 0;*/
+
+  appearance: none;                /* убираем системные стили */
+  background-color: transparent;  /* фон — прозрачный */
+  border: none;                   /* убираем стандартную рамку */
+  border-top: 1px solid #fff;     /* только верхняя и нижняя границы */
+  border-bottom: 1px solid #fff;
+  color: #fff;                    /* цвет текста */
+  font-family: inherit;           /* наследуем шрифт от родителя */
+  font-size: 16px;
+  padding: 4px 0;
+  outline: none;                  /* сбрасываем стандартную подсветку фокуса */
+  width: 100%;
+}
+
+/*Сбросить границу у fieldset*/
+.search-form__fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*Это делает список чекбоксов горизонтальным и задаёт промежутки между ними.*/
+.search-form__checkbox-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Контейнер одного чекбокса */
+.search-form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 4px;
+  border: 1px solid transparent;
+}
+
+/* Рамка при фокусе псевдочекбокса (через has) */
+.search-form__checkbox:has(:focus-visible) {
+  border-color:#FFD700 ;
+}
+
+/* Подчёркивание текста при наведении */
+.search-form__checkbox:hover ~ .search-form__label-text {
+  text-decoration: underline;
+}
+
+/* Стилизация псевдочекбокса */
+.search-form__pseudo-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Внутренний квадрат при checked */
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+}
+
+
+
+/* Обёртка label — отвечает за рамку в активных состояниях */
+.search-form__label {
+  /*display: flex;              /* включаем флексбокс */
+  /*align-items: center;        /* выравнивание по вертикали */
+  /*gap: 10px;                  /* расстояние между подписью и инпутом */
+  /*width: fit-content;         /* ширина по содержимому */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;        /* выравнивание по вертикали */
+  gap: 10px;
+  width: fit-content;
+  padding: 5px;
+  border: 1px solid transparent; /* по умолчанию — невидима */
+  transition: border-color 0.3s ease;
+}
+
+.search-form__label:has(:focus-visible) {
+  border-color: #fff;
+}
+
+/* Обводка при фокусе (только когда клавиатура используется) */
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  border-color: #fff;
+}
+
+/* Обводка при active — если поле кликнуто мышью */
+.search-form__label:has(.search-form__textfield:active) {
+  border-color: #fff;
+}
+
+/* Обводка на hover (поведение label, а не input!) */
+/*.search-form__label:hover {
+  border-color: #FFD700;
+}*/
 
 h1,
 h2,
@@ -48,4 +295,24 @@ ol {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
+}
+
+.button {
+  background-color: transparent;
+  color: #ffffff;           
+  font-family: 'Fira Sans Condensed', sans-serif; 
+  font-size: 18px;               
+  line-height: 22px;               
+  border: 1px solid #ffffff;     
+  padding: 6px;            
+  cursor: pointer;    
+}
+
+.button:hover {
+  text-decoration: underline; /* Добавляем подчёркивание текста */
+}
+
+.search-form__submit-button {
+  align-self:center; /* Выравнивание по нижнему краю родителя (.search-form — flex) */
+  width: 194px;    /* Фиксированная ширина, как в макете */
 }
