@@ -43,12 +43,13 @@ html {
   display: grid;
   grid-template-columns: 1fr 400px;
   align-items: end; /* прижимаем к нижнему краю */
-  gap: 30px;
+  gap: 30px; 
 }
 
 .content__list-container {
-  block-size: 298px;
-  overflow-y: auto;
+  block-size: 395px;
+  overflow-y: auto; 
+  padding: 3px;
 }
 
 .content__list {
@@ -103,8 +104,7 @@ html {
   white-space: nowrap;             /* Запрещаем перенос строки */
   text-transform: uppercase;
   font-family: 'Oswald';
-  margin-bottom: 6px;
-  
+  margin-bottom: 6px;  
 }
 
 .content__video-card-description {
@@ -118,10 +118,14 @@ html {
 
 }
 
+.result{
+  margin-top: 78px;
+}
+
 .result__video-container {
-  block-size: 386px;         /* высота */
-  inline-size: 711px;        /* ширина */
-  margin-block-end: 16px;    /* отступ снизу */
+  width: 100%;
+  aspect-ratio: 16/9; /* Соотношение сторон */
+  margin-block-end: 16px;
 }
 
 .result__video {
@@ -132,17 +136,18 @@ html {
 
 .search-form {
   display: flex;
-  gap: 20px;
-  /*align-items: start;*/
-  align-items: flex-start;
-  justify-content: space-between; 
+  gap: 40px;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%
 }
 
 .search-form__fieldset-title {
-  font-family: 'Oswald', sans-serif; /* Шрифт заголовков */
-  font-weight: 600;                  /* Полужирный */
-  font-size: 22px;                   /* Размер шрифта */
-  margin-bottom: 16px;               /* Отступ снизу */
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;                  
+  font-size: 18px;
+  line-height: 22px;                   
+  margin-bottom: 5px;               
 }
 
 .search-form__label-text {
@@ -169,7 +174,7 @@ html {
   font-size: 16px;
   padding: 4px 0;
   outline: none;                  /* сбрасываем стандартную подсветку фокуса */
-  width: 100%;
+  min-width: 225px;
 }
 
 /*Сбросить границу у fieldset*/
@@ -177,12 +182,15 @@ html {
   border: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column; 
+  align-self: flex-end;
 }
 
 /*Это делает список чекбоксов горизонтальным и задаёт промежутки между ними.*/
 .search-form__checkbox-list {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -241,7 +249,7 @@ html {
   align-items: center;        /* выравнивание по вертикали */
   gap: 10px;
   width: fit-content;
-  padding: 5px;
+  /*padding: 5px;*/
   border: 1px solid transparent; /* по умолчанию — невидима */
   transition: border-color 0.3s ease;
 }
@@ -309,10 +317,15 @@ ol {
 }
 
 .button:hover {
-  text-decoration: underline; /* Добавляем подчёркивание текста */
+  text-decoration: underline;
 }
 
 .search-form__submit-button {
-  align-self:center; /* Выравнивание по нижнему краю родителя (.search-form — flex) */
-  width: 194px;    /* Фиксированная ширина, как в макете */
+  align-self: flex-end;
+  width: 194px;    
+}
+
+.more-button {
+  width: 100%; 
+  margin-top: 30px;
 }
